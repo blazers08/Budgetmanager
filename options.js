@@ -15,14 +15,13 @@ $(function(){
 
 	$('#resetTotal').click(function(){
 		chrome.storage.sync.set({'total': 0}, function(){
-			chrome.storage.sync.set({'total': newTotal},function(){
 				var notifOptions = {
 						type: 'basic',
 						iconUrl: 'creditcard_resized.png',
 						title: 'Total reset!',
-						message: 'Total has been reset!'
+						message: 'Total has been reset to 0!'
 					};
-					chrome.notifocations.create('limitNotif', notifOptions);	
+					chrome.notifications.create('limitNotif', notifOptions);	
 		});
 	});
 });

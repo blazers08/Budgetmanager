@@ -1,8 +1,8 @@
 $(function(){
 
 	chrome.storage.sync.get(['total','limit'], function(budget){
-		$('#total').text.(budget.total);
-		$('#limit').text.(budget.limit);
+		$('#total').text(budget.total);
+		$('#limit').text(budget.limit);
 	})
 
 	$('#spendAmount').click(function(){
@@ -19,14 +19,13 @@ $(function(){
 
 			chrome.storage.sync.set({'total': newTotal}, function(){
 				if (amount && newTotal >= budget.limit) {
-					var notifOptions = {
-						type: 'basic',
-						iconUrl: 'creditcard_resized.png',
-						title: 'Limit reached!',
-						message: 'Uh oh!'
+				 	var notifOptions = {
+				 		type: 'basic',
+				 		iconUrl: 'creditcard_resized.png',
+				 		title: 'Limit reached!',
+						message: "Uh oh!"
 					};
-
-					chrome.notifocations.create('limitNotif', notifOptions);
+				 	chrome.notifications.create('limitNotif', notifOptions);
 				}
 			});
 
